@@ -16,7 +16,7 @@ const Intro = () => {
   }, []);
 
   useEffect(() => {
-    if (content.length > 0) {
+    if (content.length > 0 && window.innerWidth >= 991) {
       const holder = document.querySelector(".holder");
       let overflowX, mapPositionX, overflowY, mapPositionY;
 
@@ -59,13 +59,20 @@ const Intro = () => {
     }
   }, [content]);
 
+  const selectedImagesIdx = (idx) => {
+    if (window.innerWidth >= 991) return true;
+    const selectedIdx = [2, 4, 5, 7, 10, 14];
+    const sIdx = selectedIdx.findIndex((s) => s === idx);
+    return sIdx > -1;
+  };
+
   return (
     <div className="wrapper">
       <div className="container">
         <div className="holder">
           {content?.map(
             (c, idx) =>
-              !c?.image?.includes("mp4") && (
+              !c?.image?.includes("mp4") && selectedImagesIdx(idx) && (
                 <div
                   key={`${idx}-${c?.title}`}
                   className="block"
