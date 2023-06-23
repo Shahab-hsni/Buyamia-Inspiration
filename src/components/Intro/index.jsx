@@ -12,25 +12,33 @@ const Intro = () => {
   const counterValid = counter < 100;
 
   useEffect(() => {
-    const intervalId = counterValid && setInterval(() => setCounter((t) => t + 1), 100);
-    return () => clearInterval(intervalId)
+    const intervalId =
+      counterValid && setInterval(() => setCounter((t) => t + 1), 100);
+    return () => clearInterval(intervalId);
   }, [counterValid]);
 
   useEffect(() => {
     if (counter >= 100) {
       const tl = gsap.timeline();
-      tl.to('.loader', {
-        duration: 7,
-        y: -2000,
-        ease: "power1.out",
-      }, 0)
-        .to('.holder', {
+      tl.to(
+        ".loader",
+        {
+          duration: 7,
+          y: -2000,
+          ease: "power1.out",
+        },
+        0
+      ).to(
+        ".holder",
+        {
           duration: 1,
           opacity: 1,
           x: 0,
           y: 0,
           ease: "sine.out",
-        }, 0)
+        },
+        0
+      );
     }
   }, [counter]);
 
@@ -97,12 +105,14 @@ const Intro = () => {
     <div className="wrapper">
       <div className="container">
         <div className="loader">
+          <img src="/logo.svg" alt="Buyamia" />
           <p className="loading">{counter}</p>
         </div>
         <div className="holder">
           {content?.map(
             (c, idx) =>
-              !c?.image?.includes("mp4") && selectedImagesIdx(idx) && (
+              !c?.image?.includes("mp4") &&
+              selectedImagesIdx(idx) && (
                 <div
                   key={`${idx}-${c?.title}`}
                   className="block"
