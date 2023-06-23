@@ -17,6 +17,10 @@ body::-webkit-scrollbar {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  @media screen and (max-width: 991px) {
+    height: 100%;
+    overflow: hidden;
+  }
 }
 .loader {
   position: fixed;
