@@ -6,16 +6,17 @@ import { getInspirations } from "@/service/inspirations";
 import { getImgSrc } from "@/utils/HelperFn";
 import { gsap } from "gsap";
 
+const breakpointColumnsObj = {
+  default: 6, // Number of columns for default breakpoint
+  1100: 4, // Number of columns for 1100px breakpoint and above
+  800: 3, // Number of columns for 800px breakpoint and above
+  500: 2, // Number of columns for 500px breakpoint and above
+};
+
 const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const [content, setContent] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
-  const breakpointColumnsObj = {
-    default: 6, // Number of columns for default breakpoint
-    1100: 4, // Number of columns for 1100px breakpoint and above
-    800: 3, // Number of columns for 800px breakpoint and above
-    500: 2, // Number of columns for 500px breakpoint and above
-  };
 
   useEffect(() => {
     getInspirations().then((res) => {
