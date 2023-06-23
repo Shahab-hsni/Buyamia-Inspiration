@@ -42,12 +42,13 @@ body::-webkit-scrollbar {
 }
 .enter-btn {
   border: 1px solid black;
-  background: none;
+  background: black;
   text-transform: uppercase;
   width: 200px;
   height: 60px;
   cursor: pointer;
   border-radius: 4px;
+  color: #fff;
 }
 .block {
   position: absolute;
